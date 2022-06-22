@@ -7,8 +7,7 @@ const fields = [
     { tag: 'input', attributes: { type: 'text', name: 'title', placeholder: 'Title' } },
     { tag: 'input', attributes: { type: 'text', name: 'name', placeholder: 'Your name' } },
     { tag: 'textarea', attributes: { name: 'story', placeholder: 'Your story' } },
-    { tag: 'input', attributes: { type: 'submit', value: 'Publish' } },
-    { tag: 'input', attributes: { type: 'date', name: 'date', placeholder: 'Date' } }
+    { tag: 'input', attributes: { type: 'submit', value: 'Publish' } }
 ]
 
 async function loadModalFor(category, id) {
@@ -24,13 +23,20 @@ async function loadModalFor(category, id) {
 }
 
 function renderPostModal(post) {
-    modalHeader.textContent = `${post.title} - ${post.name} - ${post.date}`;
+    modalHeader.textContent = `${post.title} - ${post.name}`;
     //const authorLink = createItemLink(book.author);
     //const abstract = document.createElement('p');
     //abstract.textContent = post.story;
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete Post';
     deleteBtn.onclick = () => deletePost(post.id);
+    const datetime = document.createElement('p');
+    let datetimeString = post.date;
+    datetimeString = datetimeString.replace('T', ' ');
+    datetimeString = datetimeString.substring(0, 19);
+    datetime.textContent = datetimeString;
+    modalContent.appendChild(datetime);
+    modalContent.appendChild(document.createElement('br'));
     const story = document.createElement('p');
     story.textContent = post.story;
     modalContent.appendChild(story);

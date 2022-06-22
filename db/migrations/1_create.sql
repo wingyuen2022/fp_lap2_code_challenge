@@ -5,5 +5,5 @@ CREATE TABLE posts (
     title varchar(512) not null,
     name varchar(512) not null,
     story varchar(1024) not null,
-    date date
+    date timestamp default now()
 );

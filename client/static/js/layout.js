@@ -34,7 +34,7 @@ function renderCard(data, category){
     let card = document.createElement('div');
     card.className = 'card';
     link.href = `#${category}/${data.id}` 
-    card.textContent = data.name || data.title;
+    card.textContent = data.title;
     link.appendChild(card);
     main.appendChild(link);
 }
