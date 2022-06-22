@@ -6,6 +6,7 @@ module.exports = class Post {
         this.title = data.title;
         this.name = data.name;
         this.story = data.story;
+        this.date = data.date
     };
 
     static get all(){
@@ -37,7 +38,7 @@ module.exports = class Post {
     static async create(newData){
         return new Promise (async (resolve, reject) => {
             try {
-                let data = await db.query(`INSERT INTO posts (title, name, story) VALUES ($1, $2, $3) RETURNING *;`, [ newData.title, newData.name, newData.story ]);
+                let data = await db.query(`INSERT INTO posts (title, name, story, date) VALUES ($1, $2, $3, $4) RETURNING *;`, [ newData.title, newData.name, newData.story, newData.date ]);
                 resolve (data.rows[0]);
             } catch (err) {
                 reject('Post could not be created');

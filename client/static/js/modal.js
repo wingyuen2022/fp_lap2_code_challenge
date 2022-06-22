@@ -7,7 +7,8 @@ const fields = [
     { tag: 'input', attributes: { type: 'text', name: 'title', placeholder: 'Title' } },
     { tag: 'input', attributes: { type: 'text', name: 'name', placeholder: 'Your name' } },
     { tag: 'textarea', attributes: { name: 'story', placeholder: 'Your story' } },
-    { tag: 'input', attributes: { type: 'submit', value: 'Publish' } }
+    { tag: 'input', attributes: { type: 'submit', value: 'Publish' } },
+    { tag: 'input', attributes: { type: 'date', name: 'date', placeholder: 'Date' } }
 ]
 
 async function loadModalFor(category, id) {
@@ -23,7 +24,7 @@ async function loadModalFor(category, id) {
 }
 
 function renderPostModal(post) {
-    modalHeader.textContent = `${post.title} - ${post.name}`;
+    modalHeader.textContent = `${post.title} - ${post.name} - ${post.date}`;
     //const authorLink = createItemLink(book.author);
     //const abstract = document.createElement('p');
     //abstract.textContent = post.story;
